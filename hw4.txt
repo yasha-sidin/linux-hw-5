@@ -1,0 +1,67 @@
+ЗАДАНИЕ 1
+
+Подключение дополнительного репозитория(Docker) и установка пакета docker-ce 
+
+    touch /etc/apt/sources.list.d/docker.list
+
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg > /etc/apt/trusted.gpg.d/docker_pubkey.asc
+
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic nightly" > /etc/apt/sources.list.d/docker.list
+
+    sudo apt -y install docker-ce
+
+ЗАДАНИЕ 2
+
+Установка и удаление пакета с помощью утилиты dpkg
+
+    wget https://dev.mysql.com/get/mysql-apt-config_0.8.25-1_all.deb
+
+    dpkg -i mysql-apt-config_0.8.25-1_all.deb - установка пакета
+
+    dpkg -r mysql-server - удаление пакета mysql-server
+
+ЗАДАНИЕ 3
+
+Установка и удаление snap-пакетов с помощью утилиты snap 
+
+    snap install chromium - установка
+
+    snap remove chromium - удаление
+
+ЗАДАНИЕ 4
+
+Добавление задачи Cron
+
+    vim /etc/crontab
+
+    Добавляем новую строчку:
+
+        */3 *   * * *   root    if [ -d /home/testdir ]; then echo "New three minute" >> /home/testdir/testfile; else mkdir /home/testdir | touch /home/testdir/testfile; fi
+
+ЗАДАНИЕ 5
+
+Добавление PPA-репозитория
+
+     apt-add-repository ppa:nginx/stable - подключение репозитория
+
+     apt install ngnix - установка пакета
+
+     add-apt-repository --remove ppa:nginx/stable - удаление репозитория 
+
+ЗАДАНИЕ 6
+
+Создание задачи cron по созданию резервной копии от лица пользователя
+
+    crontab -e
+
+    Добавляем:
+
+        */2 * * * *     sudo tar -zcf /var/backups/home.tgz /home - если в visudo есть NOPASWD
+
+    
+
+
+
+
+
+
